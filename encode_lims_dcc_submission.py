@@ -30,8 +30,8 @@ biosample_type_map = dict({
     })
 
 platform_map = dict({
-    "HiSeq 2000": "03a96eaf-75da-44e2-b4f6-e349e8c3655e",
-    "GAIIx": "7efe9ddc-bbe6-457d-bc98-f8bac2478bda"
+    "HiSeq 2000": "ENCODE:HiSeq2000",
+    "GAIIx": "ENCODE:GAIIx"
     })
 
 
@@ -56,9 +56,9 @@ def read_truptis_file(infile):
             experiments_dict['assay_term_name'] = "ChIP-seq"
             experiments_dict['lab'] = "michael-snyder"
             experiments_dict['award'] = "U54HG006996"
-            experiments_dict['target'] = record.get('Targets')
+            experiments_dict['target'] = record.get('Target')
             experiments_dict['aliases'] = [experiment_alias]
-            experiments_dict['description'] = ""
+            experiments_dict['description'] = str(record.get('Target')).strip('-human') + ' ChIP-seq on human ' + str(record.get('Cell_line'))
             experiments_dict['documents'] = 'michael-snyder:' + str(record.get('Protocol_documents'))
 
             experiment_check[experiment_alias] = experiments_dict
@@ -73,9 +73,9 @@ def read_truptis_file(infile):
         #library_dict['documents'] = need your protocol document
         #library_dict['nucleic_acid_starting_quantity'] = 'Unknown' - Where to get this information
         #library_dict['fragmentation_date'] = Might not need
-        library_dict['size_range'] = record.get('Size range').strip(' bp')
+        library_dict['size_range'] = record.get('Size_range').strip(' bp')
         library_dict['paired_ended'] = True
-        library_dict['aliases'] = ['michael-snyder:' + str(record.get('TruSeq_library_name')) + '_' + str(record.get('Truseq_Barcode'))]
+        library_dict['aliases'] = ['michael-snyder:' + str(record.get('TruSeq_library_name')).strip('# ') + '_' + str(record.get('Truseq_Barcode'))]
         library_dict['lab'] = "michael-snyder"
         library_dict['award'] = "U54HG006996"
         list_output.append(library_dict)
@@ -136,12 +136,12 @@ if __name__ == "__main__":
     HEADERS = {'content-type': 'application/json'}
 
     settings = dict()
-    settings['USER'] = "dsalins@stanford.edu"
+    settings['USER'] = "your_email"
     settings['SERVER'] = "http://test.encodedcc.org"
-    settings['AUTHID'] = "Y5PLREWZ"
-    settings['AUTHPW'] = "nnug55q6mnlsgwze"
+    settings['AUTHID'] = "your_key"
+    settings['AUTHPW'] = "your_password"
 
-    post_objects = read_objects("truptis_output_file.json")
+    post_objects = read_objects(args.outfile)
 
     for i in range(0, len(post_objects)):
         object_id = post_objects[i]['@id']
@@ -151,4 +151,4 @@ if __name__ == "__main__":
         authpw = settings.get('AUTHPW')
         response = requests.post(url, auth=(authid, authpw), headers=HEADERS, data=post_object)
         print response.text
-    '''
+   ''' 
