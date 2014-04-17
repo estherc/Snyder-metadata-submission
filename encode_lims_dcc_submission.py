@@ -59,7 +59,7 @@ def read_truptis_file(infile):
             experiments_dict['target'] = record.get('Target')
             experiments_dict['aliases'] = [experiment_alias]
             experiments_dict['description'] = str(record.get('Target')).strip('-human') + ' ChIP-seq on human ' + str(record.get('Cell_line'))
-            experiments_dict['documents'] = 'michael-snyder:' + str(record.get('Protocol_documents'))
+            experiments_dict['documents'] = ['michael-snyder:' + str(record.get('Protocol_documents'))]
 
             experiment_check[experiment_alias] = experiments_dict
             list_output.append(experiments_dict)
