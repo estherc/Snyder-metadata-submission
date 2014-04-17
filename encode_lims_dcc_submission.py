@@ -34,6 +34,22 @@ platform_map = dict({
     "GAIIx": "ENCODE:GAIIx"
     })
 
+def postObject(object):
+    HEADERS = {'content-type': 'application/json'}
+
+    settings = dict()
+    settings['USER'] = "dsalins@stanford.edu"
+    settings['SERVER'] = "http://test.encodedcc.org"
+    settings['AUTHID'] = "Q6YDM5PQ"
+    settings['AUTHPW'] = "axtdcg5qznccdyfc"
+
+    object_id = object['@id']
+    post_object = filter_object(object, '@id')
+    url = (settings.get('SERVER') + '/' + str(object_id))
+    authid = settings.get('AUTHID')
+    authpw = settings.get('AUTHPW')
+    response = requests.post(url, auth=(authid, authpw), headers=HEADERS, data=post_object)
+    return response.json()
 
 def read_truptis_file(infile):
     value_list = open(infile, "rU")
@@ -62,6 +78,8 @@ def read_truptis_file(infile):
             experiments_dict['documents'] = ['michael-snyder:' + str(record.get('Protocol_documents'))]
 
             experiment_check[experiment_alias] = experiments_dict
+            response = postObject(experiments_dict)
+            record['ENCSR_No. '] = response['@graph'][0]['accession']
             list_output.append(experiments_dict)
 
         # Register Library
@@ -79,6 +97,8 @@ def read_truptis_file(infile):
         library_dict['lab'] = "michael-snyder"
         library_dict['award'] = "U54HG006996"
         list_output.append(library_dict)
+        response = postObject(library_dict)
+        record['ENCLB_No. '] = response['@graph'][0]['accession']
 
         # Register replicates
         replicates_dict = {}
@@ -103,6 +123,8 @@ def read_truptis_file(infile):
         replicates_dict['read_length'] = 100
         replicates_dict['read_length_units'] = 'nt'
         list_output.append(replicates_dict)
+        response = postObject(replicates_dict)
+
 
     json.dump(list_output, dict_output, indent=4)
 
@@ -129,26 +151,4 @@ if __name__ == "__main__":
 
     read_truptis_file(args.infile)
 
-    '''
     #Commented out for now to make sure JSON objects are properly created before submitting
-
-    # set headers.  UNCLEAR IF THIS IS USED PROPERLY
-    HEADERS = {'content-type': 'application/json'}
-
-    settings = dict()
-    settings['USER'] = "your_email"
-    settings['SERVER'] = "http://test.encodedcc.org"
-    settings['AUTHID'] = "your_key"
-    settings['AUTHPW'] = "your_password"
-
-    post_objects = read_objects(args.outfile)
-
-    for i in range(0, len(post_objects)):
-        object_id = post_objects[i]['@id']
-        post_object = filter_object(post_objects[i], '@id')
-        url = (settings.get('SERVER') + '/' + str(object_id))
-        authid = settings.get('AUTHID')
-        authpw = settings.get('AUTHPW')
-        response = requests.post(url, auth=(authid, authpw), headers=HEADERS, data=post_object)
-        print response.text
-   ''' 
