@@ -1,0 +1,443 @@
+[
+    {
+        "description": "KAT2B ChIP-seq on human HeLa-S3", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "KAT2B-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002791", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "HeLa-S3", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:HeLa-S3-PCAF_3378s"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS748HNU", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:612_A_TruSeq_ATCACG"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:612_A_TruSeq_ATCACG", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:HeLa-S3-PCAF_3378s", 
+        "flowcell_details": [
+            {
+                "machine": "HAVERS", 
+                "lane": "6", 
+                "barcode": "ATCACG", 
+                "flowcell": "BC1UDWACXX"
+            }
+        ], 
+        "antibody": "ENCAB000BDZ"
+    }, 
+    {
+        "description": "RB1 ChIP-seq on human HeLa-S3", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "RB1-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002791", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "HeLa-S3", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:HeLa-S3-Rb_9313"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS748HNU", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:612_A_TruSeq_CGATGT"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:612_A_TruSeq_CGATGT", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:HeLa-S3-Rb_9313", 
+        "flowcell_details": [
+            {
+                "machine": "HAVERS", 
+                "lane": "6", 
+                "barcode": "CGATGT", 
+                "flowcell": "BC1UDWACXX"
+            }
+        ], 
+        "antibody": "ENCAB000BFB"
+    }, 
+    {
+        "description": "BMI1 ChIP-seq on human HeLa-S3", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "BMI1-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002791", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "HeLa-S3", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:HeLa-S3-Bmi1_NBP1-96140"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS748HNU", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:612_A_TruSeq_TTAGGC"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:612_A_TruSeq_TTAGGC", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:HeLa-S3-Bmi1_NBP1-96140", 
+        "flowcell_details": [
+            {
+                "machine": "HAVERS", 
+                "lane": "6", 
+                "barcode": "TTAGGC", 
+                "flowcell": "BC1UDWACXX"
+            }
+        ], 
+        "antibody": "ENCAB000AYU"
+    }, 
+    {
+        "description": "BMI1 ChIP-seq on human GM12878", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "BMI1-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002784", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "GM12878", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:GM12878-Bmi1_NBP1-96140"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS256VGP", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:612_B_TruSeq_CAGATC"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:612_B_TruSeq_CAGATC", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:GM12878-Bmi1_NBP1-96140", 
+        "flowcell_details": [
+            {
+                "machine": "HAVERS", 
+                "lane": "7", 
+                "barcode": "CAGATC", 
+                "flowcell": "BC1UDWACXX"
+            }
+        ], 
+        "antibody": "ENCAB000AYU"
+    }, 
+    {
+        "description": "SMAD2 ChIP-seq on human GM12878", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "SMAD2-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002784", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "GM12878", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:GM12878-SMAD2_600-401-A59"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS256VGP", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:612_B_TruSeq_GATCAG"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:612_B_TruSeq_GATCAG", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:GM12878-SMAD2_600-401-A59", 
+        "flowcell_details": [
+            {
+                "machine": "HAVERS", 
+                "lane": "7", 
+                "barcode": "GATCAG", 
+                "flowcell": "BC1UDWACXX"
+            }
+        ], 
+        "antibody": "ENCAB000AYI"
+    }, 
+    {
+        "description": "POU5F1 ChIP-seq on human GM12878", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "POU5F1-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002784", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "GM12878", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:GM12878-Oct-4_2750S"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS260WJQ", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:620_A_TruSeq_ATCACG"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:620_A_TruSeq_ATCACG", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:GM12878-Oct-4_2750S", 
+        "flowcell_details": [
+            {
+                "machine": "LYNLEY", 
+                "lane": "1", 
+                "barcode": "ATCACG", 
+                "flowcell": "BC1R60ACXX"
+            }
+        ], 
+        "antibody": "ENCAB000BDY"
+    }, 
+    {
+        "description": "SUZ12 ChIP-seq on human GM12878", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "SUZ12-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002784", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "GM12878", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:GM12878-SUZ12_3737s"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS260WJQ", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:620_A_TruSeq_CGATGT"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:620_A_TruSeq_CGATGT", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:GM12878-SUZ12_3737s", 
+        "flowcell_details": [
+            {
+                "machine": "LYNLEY", 
+                "lane": "1", 
+                "barcode": "CGATGT", 
+                "flowcell": "BC1R60ACXX"
+            }
+        ], 
+        "antibody": "ENCAB000BEB"
+    }, 
+    {
+        "description": "UBTF ChIP-seq on human HeLa-S3", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "UBTF-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002791", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "HeLa-S3", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:HeLa-S3-UBF_sc-13125x"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS352IHZ", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:620_A_TruSeq_TTAGGC"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:620_A_TruSeq_TTAGGC", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:HeLa-S3-UBF_sc-13125x", 
+        "flowcell_details": [
+            {
+                "machine": "LYNLEY", 
+                "lane": "1", 
+                "barcode": "TTAGGC", 
+                "flowcell": "BC1R60ACXX"
+            }
+        ], 
+        "antibody": "ENCAB000AMD"
+    }, 
+    {
+        "description": "ZC3H11A ChIP-seq on human HeLa-S3", 
+        "documents": "michael-snyder:ChIP-Seq_protocol_Snyder_lab_HiSeq", 
+        "target": "ZC3H11A-human", 
+        "assay_term_name": "ChIP-seq", 
+        "biosample_term_id": "EFO:0002791", 
+        "assay_term_id": "OBI:0000716", 
+        "biosample_type": "immortalized cell line", 
+        "biosample_term_name": "HeLa-S3", 
+        "award": "U54HG006996", 
+        "lab": "michael-snyder", 
+        "@id": "experiment/", 
+        "aliases": [
+            "michael-snyder:HeLa-S3-ZCH311A_NB100-74650"
+        ]
+    }, 
+    {
+        "nucleic_acid_term_name": "DNA", 
+        "size_range": "450-650", 
+        "nucleic_acid_term_id": "SO:0000352", 
+        "lab": "michael-snyder", 
+        "paired_ended": true, 
+        "award": "U54HG006996", 
+        "biosample": "ENCBS352IHZ", 
+        "@id": "library/", 
+        "aliases": [
+            "michael-snyder:620_A_TruSeq_TGACCA"
+        ]
+    }, 
+    {
+        "biological_replicate_number": 1, 
+        "read_length_units": "nt", 
+        "read_length": 100, 
+        "@id": "replicate/", 
+        "technical_replicate_number": 1, 
+        "library": "michael-snyder:620_A_TruSeq_TGACCA", 
+        "platform": "ENCODE:HiSeq2000", 
+        "paired_ended": true, 
+        "experiment": "michael-snyder:HeLa-S3-ZCH311A_NB100-74650", 
+        "flowcell_details": [
+            {
+                "machine": "LYNLEY", 
+                "lane": "1", 
+                "barcode": "TGACCA", 
+                "flowcell": "BC1R60ACXX"
+            }
+        ], 
+        "antibody": "ENCAB000AMN"
+    }
+]
