@@ -14,7 +14,7 @@ cell_line_map = dict({
     "MCF-7": "EFO:0001203",
     "SK-N-SH": "EFO:0003072",
     "HepG2": "EFO:0001187",
-    "H1 Neurons": "CL:0002319"
+    "neural cell": "CL:0002319"
     })
 
 biosample_type_map = dict({
@@ -26,7 +26,7 @@ biosample_type_map = dict({
     "MCF-7": "immortalized cell line",
     "SK-N-SH": "immortalized cell line",
     "HepG2": "immortalized cell line",
-    "H1 Neurons": "primary cell line"
+    "neural cell": "primary cell line"
     })
 
 platform_map = dict({
@@ -38,10 +38,10 @@ def postObject(object):
     HEADERS = {'content-type': 'application/json'}
 
     settings = dict()
-    settings['USER'] = "dsalins@stanford.edu"
+    settings['USER'] = ""
     settings['SERVER'] = "http://test.encodedcc.org"
-    settings['AUTHID'] = "Q6YDM5PQ"
-    settings['AUTHPW'] = "axtdcg5qznccdyfc"
+    settings['AUTHID'] = ""
+    settings['AUTHPW'] = ""
 
     object_id = object['@id']
     post_object = filter_object(object, '@id')
@@ -55,10 +55,10 @@ def getObject(object):
     HEADERS = {'content-type': 'application/json'}
 
     settings = dict()
-    settings['USER'] = "dsalins@stanford.edu"
+    settings['USER'] = "d"
     settings['SERVER'] = "http://test.encodedcc.org"
-    settings['AUTHID'] = "Q6YDM5PQ"
-    settings['AUTHPW'] = "axtdcg5qznccdyfc"
+    settings['AUTHID'] = ""
+    settings['AUTHPW'] = ""
 
     url = (settings.get('SERVER') + '/' + str(object))
     authid = settings.get('AUTHID')
