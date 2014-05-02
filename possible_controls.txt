@@ -1,0 +1,6 @@
+GM12878	michael-snyder:GM12878-Rabbit_IgG;michael-snyder:GM12878-Input_GM12878
+HeLa-S3	michael-snyder:HeLa-S3-RabbitIgG_R;michael-snyder:HeLa-S3-Input_HelaS3
+HepG2	michael-snyder:HepG2-Rabbit_IgG;michael-snyder:HepG2-Input_HepG2
+K562	michael-snyder:K562-Rabbit_IgG;michael-snyder:K562-Input_K562
+MCF-7	michael-snyder:MCF-7-Mouse_IgG;michael-snyder:MCF-7-Rabbit_IgG;michael-snyder:MCF-7-Input_MCF7
+neural cell	michael-snyder:neural cell-Rabbit_IgG;michael-snyder:neural cell-Input_H1 Neurons
