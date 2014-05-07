@@ -34,14 +34,31 @@ platform_map = dict({
     "GAIIx": "ENCODE:GAIIx"
     })
 
+possible_control_map = dict({
+    "GM12878" : "michael-snyder:GM12878-Rabbit_IgG;michael-snyder:GM12878-Input_GM12878",
+    "HeLa-S3" : "michael-snyder:HeLa-S3-RabbitIgG_R;michael-snyder:HeLa-S3-Input_HelaS3",
+    "HepG2" : "michael-snyder:HepG2-Rabbit_IgG;michael-snyder:HepG2-Input_HepG2",
+    "K562" : "michael-snyder:K562-Rabbit_IgG;michael-snyder:K562-Input_K562",
+    "MCF-7" : "michael-snyder:MCF-7-Mouse_IgG;michael-snyder:MCF-7-Rabbit_IgG;michael-snyder:MCF-7-Input_MCF7",
+    "neural cell" : "michael-snyder:neural cell-Rabbit_IgG;michael-snyder:neural cell-Input_H1 Neurons"
+    })
+
+def getUsername():
+    login_file = "~/Documents/SVNRepositories/security/encode_dcc_login"
+    login_values = open(login_file, "rU")
+    record_values = csv.DictReader(value_list, delimiter='\t')
+    encode_dcc_user = ''
+    encode_dcc_username = ''
+    encode_dcc_password = ''
+
 def postObject(object):
     HEADERS = {'content-type': 'application/json'}
 
     settings = dict()
-    settings['USER'] = ""
+    settings['USER'] = encode_dcc_user
     settings['SERVER'] = "http://test.encodedcc.org"
-    settings['AUTHID'] = ""
-    settings['AUTHPW'] = ""
+    settings['AUTHID'] = encode_dcc_username
+    settings['AUTHPW'] = encode_dcc_password
 
     object_id = object['@id']
     post_object = filter_object(object, '@id')
@@ -55,10 +72,10 @@ def getObject(object):
     HEADERS = {'content-type': 'application/json'}
 
     settings = dict()
-    settings['USER'] = "d"
+    settings['USER'] = encode_dcc_user
     settings['SERVER'] = "http://test.encodedcc.org"
-    settings['AUTHID'] = ""
-    settings['AUTHPW'] = ""
+    settings['AUTHID'] = encode_dcc_username
+    settings['AUTHPW'] = encode_dcc_password
 
     url = (settings.get('SERVER') + '/' + str(object))
     authid = settings.get('AUTHID')
@@ -91,12 +108,14 @@ def read_truptis_file(infile):
                 experiments_dict['lab'] = "michael-snyder"
                 experiments_dict['award'] = "U54HG006996"
                 experiments_dict['target'] = record.get('Target')
-                experiments_dict['aliases'] = [experiment_alias]
+                experiments_dict['aliases'] = experiment_alias
                 experiments_dict['description'] = str(record.get('Target')).strip('-human') + ' ChIP-seq on human ' + str(record.get('Cell_line'))
                 experiments_dict['documents'] = ['michael-snyder:' + str(record.get('Protocol_documents'))]
-
+                if record.get('Target') != 'Control-human':
+                    experiments_dict['possible_controls'] = possible_control_map[record.get('Cell_line')]
                 experiment_check[experiment_alias] = experiments_dict
                 response = postObject(experiments_dict)
+                print response['status']
                 if response is not None:
                     try:
                         record['ENCSR_No. '] = response['@graph'][0]['accession']
