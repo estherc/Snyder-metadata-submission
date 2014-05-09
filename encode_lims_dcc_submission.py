@@ -35,12 +35,21 @@ platform_map = dict({
     })
 
 possible_control_map = dict({
-    "GM12878" : "michael-snyder:GM12878-Rabbit_IgG;michael-snyder:GM12878-Input_GM12878",
-    "HeLa-S3" : "michael-snyder:HeLa-S3-RabbitIgG_R;michael-snyder:HeLa-S3-Input_HelaS3",
-    "HepG2" : "michael-snyder:HepG2-Rabbit_IgG;michael-snyder:HepG2-Input_HepG2",
-    "K562" : "michael-snyder:K562-Rabbit_IgG;michael-snyder:K562-Input_K562",
-    "MCF-7" : "michael-snyder:MCF-7-Mouse_IgG;michael-snyder:MCF-7-Rabbit_IgG;michael-snyder:MCF-7-Input_MCF7",
-    "neural cell" : "michael-snyder:neural cell-Rabbit_IgG;michael-snyder:neural cell-Input_H1 Neurons"
+    "GM12878" : ["michael-snyder:GM12878-Rabbit_IgG", "michael-snyder:GM12878-Input_GM12878"],
+    "HeLa-S3" : ["michael-snyder:HeLa-S3-Rabbit_IgG", "michael-snyder:HeLa-S3-Input_HelaS3"],
+    "HepG2" : ["michael-snyder:HepG2-Rabbit_IgG", "michael-snyder:HepG2-Input_HepG2"],
+    "K562" : ["michael-snyder:K562-Rabbit_IgG", "michael-snyder:K562-Input_K562"],
+    "MCF-7" : ["michael-snyder:MCF-7-Mouse_IgG" , "michael-snyder:MCF-7-Rabbit_IgG", "michael-snyder:MCF-7-Input_MCF7"],
+    "neural cell" : ["michael-snyder:neural cell-Rabbit_IgG", "michael-snyder:neural cell-Input_H1 Neurons"]
+    })
+
+## This is reversed because the control that needs to be removed is the opposite when sending to the DCC
+##    The possible_control_map should be the opposite 
+reverse_remove_ab_host_control_map = dict({
+    "R" : "Rabbit_IgG",
+    "M" : "Mouse_IgG",
+    "G" : "Goat_IgG",
+    "" : "Control"
     })
 
 def getUsername():
@@ -96,7 +105,7 @@ def read_truptis_file(infile):
         if record.get('Cell_line') is not '':
         # Register experiments
             experiments_dict = {}
-            print 'Processing ID: ' + str(record.get('Serial_number'))
+            print 'Processing ID: ' + str(record.get('Serial number'))
             experiment_alias = 'michael-snyder:' + str(record.get('Cell_line')) + '-' + str(record.get('Factor'))
             if experiment_alias not in experiment_check.keys():
                 experiments_dict['@id'] = 'experiment/'
@@ -108,14 +117,22 @@ def read_truptis_file(infile):
                 experiments_dict['lab'] = "michael-snyder"
                 experiments_dict['award'] = "U54HG006996"
                 experiments_dict['target'] = record.get('Target')
-                experiments_dict['aliases'] = experiment_alias
+                experiments_dict['aliases'] = [experiment_alias]       ## Needs to be of type array
                 experiments_dict['description'] = str(record.get('Target')).strip('-human') + ' ChIP-seq on human ' + str(record.get('Cell_line'))
                 experiments_dict['documents'] = ['michael-snyder:' + str(record.get('Protocol_documents'))]
+
+                ## Ignore if control
                 if record.get('Target') != 'Control-human':
-                    experiments_dict['possible_controls'] = possible_control_map[record.get('Cell_line')]
+                    array_possible_controls = []
+                    tmp_array_controls = possible_control_map[record.get('Cell_line')]
+                    for rec in tmp_array_controls:
+                        if str(reverse_remove_ab_host_control_map[record.get('Ab host for control')]) in str(rec):
+                            array_possible_controls.append(rec)
+                        if 'Input' in str(rec):
+                            array_possible_controls.append(rec)
+                        experiments_dict['possible_controls'] = array_possible_controls
                 experiment_check[experiment_alias] = experiments_dict
                 response = postObject(experiments_dict)
-                print response['status']
                 if response is not None:
                     try:
                         record['ENCSR_No. '] = response['@graph'][0]['accession']
@@ -181,7 +198,7 @@ def read_truptis_file(infile):
             json.dump(list_output, dict_output, indent=4)
 
             dcc_response = open('response.txt', "a+")
-            output_to_file = str(record.get('Serial_number')) + '\t' + enclb_number +'\t' + encsr_number
+            output_to_file = str(record.get('Serial number')) + '\t' + enclb_number +'\t' + encsr_number
             print output_to_file
             dcc_response.write(output_to_file + '\n')
 
