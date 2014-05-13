@@ -60,6 +60,18 @@ def getUsername():
     encode_dcc_username = ''
     encode_dcc_password = ''
 
+def read_objects(object_file):
+    json_file = open(object_file)
+    json_objects = json.load(json_file)
+    json_file.close()
+    return json_objects
+
+
+def filter_object(json_object, key):
+    json_duplicate = json_object
+    json_duplicate.pop(key)
+    return json.dumps(json_duplicate)
+
 def postObject(object):
     HEADERS = {'content-type': 'application/json'}
 
@@ -86,10 +98,13 @@ def getObject(object):
     settings['AUTHID'] = encode_dcc_username
     settings['AUTHPW'] = encode_dcc_password
 
-    url = (settings.get('SERVER') + '/' + str(object))
+    #object_id = object['@id']
+    #post_object = filter_object(object, '@id')
+    url = (settings.get('SERVER') + '/' + str(object))  #Object
     authid = settings.get('AUTHID')
     authpw = settings.get('AUTHPW')
-    response = requests.get(url, auth=(authid, authpw), headers=HEADERS, data=object)
+    #response = requests.patch(url, auth=(authid, authpw), headers=HEADERS, data=object)  #object
+    response = requests.get(url, auth=(authid, authpw), headers=HEADERS, data=object)  #object
     return response.json()
 
 def read_truptis_file(infile):
@@ -105,7 +120,7 @@ def read_truptis_file(infile):
         if record.get('Cell_line') is not '':
         # Register experiments
             experiments_dict = {}
-            print 'Processing ID: ' + str(record.get('Serial number'))
+            print 'Processing ID: ' + str(record.get('Serial_number'))
             experiment_alias = 'michael-snyder:' + str(record.get('Cell_line')) + '-' + str(record.get('Factor'))
             if experiment_alias not in experiment_check.keys():
                 experiments_dict['@id'] = 'experiment/'
@@ -141,6 +156,7 @@ def read_truptis_file(infile):
                         list_output.append(experiments_dict)
                     except:
                         response_id = getObject(experiment_alias)
+                        #response_id = getObject(experiments_dict)
                         encsr_number = str(response_id['accession'])
                         json.dump(response_id, dict_output, indent=4)
 
@@ -167,6 +183,7 @@ def read_truptis_file(infile):
                     ist_output.append(library_dict)
                 except:
                     response_id = getObject('michael-snyder:' + str(record.get('TruSeq_library_name')).strip('# ') + '_' + str(record.get('Truseq_Barcode')))
+                    #response_id = getObject(library_dict)
                     enclb_number = str(response_id['accession'])
                     json.dump(response_id, dict_output, indent=4)
 
@@ -198,23 +215,11 @@ def read_truptis_file(infile):
             json.dump(list_output, dict_output, indent=4)
 
             dcc_response = open('response.txt', "a+")
-            output_to_file = str(record.get('Serial number')) + '\t' + enclb_number +'\t' + encsr_number
+            output_to_file = str(record.get('Serial_number')) + '\t' + enclb_number +'\t' + encsr_number # + '\t' + str(array_possible_controls)
             print output_to_file
             dcc_response.write(output_to_file + '\n')
 
     dict_output.close()
-
-def read_objects(object_file):
-    json_file = open(object_file)
-    json_objects = json.load(json_file)
-    json_file.close()
-    return json_objects
-
-
-def filter_object(json_object, key):
-    json_duplicate = json_object
-    json_duplicate.pop(key)
-    return json.dumps(json_duplicate)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
